@@ -4,8 +4,10 @@ import { config } from "https://deno.land/x/dotenv/mod.ts";
 
 const env = config();
 
-const app = new Application();
-const router = new Router();
+const app = new Application({
+  contextState: "alias",
+  proxy: true,
+});const router = new Router();
 
 // CORS 미들웨어 추가
 app.use(oakCors({ origin: "*" }));
