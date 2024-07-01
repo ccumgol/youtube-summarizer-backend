@@ -8,7 +8,7 @@ const app = new Application();
 const router = new Router();
 
 // CORS 미들웨어 추가
-app.use(oakCors());
+app.use(oakCors({ origin: "*" }));
 
 router.post("/extract", async (ctx) => {
   try {
