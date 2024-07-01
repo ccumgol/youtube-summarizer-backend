@@ -70,12 +70,11 @@ router.post("/extract", async (ctx) => {
 
     ctx.response.body = { summary: claudeData.content };
   } catch (error) {
-    console.error("Error:", error);
+    console.error("Detailed error:", error);
     ctx.response.status = 500;
-    ctx.response.body = { error: "An error occurred while processing the request" };
+    ctx.response.body = { error: error.message || "An error occurred while processing the request" };
   }
 });
-
 function extractVideoId(url: string): string {
   const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
   const match = url.match(regExp);
